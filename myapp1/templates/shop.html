@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color: purple;" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Flask App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:5004/">Home</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('hello_world')}}">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('about_us')}}">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('contact_us')}}">Contact</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('shop')}}">Shop</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <div class="container my-4">
+        <h1>Products</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for prod in my_products %}
+
+            <div class="col">
+                <div class="card">
+                    <img src="{{ prod.imgUrl }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ prod.name }} 
+
+                            {% if prod.onSale %}
+                            <span class="badge text-bg-danger">Sale</span>
+                            {% endif %}
+                        </h5>
+                   
+                        <p class="card-text">Rs. {{ prod.price }}</p>
+                        <p class="card-text">{{ prod.desc }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</html>
