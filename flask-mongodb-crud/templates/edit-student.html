@@ -12,28 +12,30 @@
 
   <div class="container my-5">
 
-    <h1>Add Student</h1>
+    <h1>Edit Student</h1>
 
-    <form class="mt-4" action="{{url_for('addStudent')}}" method="post">
+    <form class="mt-4" method="post">
         <div class="mb-3">
             <label for="name" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="name" name="name" >
+            <input type="text" class="form-control" id="name" 
+            name="name" value="{{student.name}}">
         </div>       
         <div class="mb-3">
             <label for="email" class="form-label">Email Address</label>
-            <input type="email" class="form-control" id="email" name="email" >
+            <input type="email" class="form-control" id="email" 
+            name="email" value="{{student.email}}" >
         </div>
         <div class="mb-3">
             <label for="contact" class="form-label">Contact</label>
-            <input type="text" class="form-control" id="contact" name="contact" >
+            <input type="text" class="form-control" id="contact" name="contact" value="{{student.contact}}" >
         </div>
 
         <div class="mb-3">
             <label for="course" class="form-label">Course Enrolled</label>
-            <input type="text" class="form-control" id="course" name="course" >
+            <input type="text" class="form-control" id="course" name="course" value="{{student.course}}" >
         </div>
 
-        <button type="submit" class="btn btn-dark">Add</button>
+        <button type="submit" class="btn btn-dark">Edit</button>
     </form>
         <a href="{{url_for('index')}}">Back to List</a>
 
