@@ -44,6 +44,18 @@ def deleteStudent(id):
 def editStudent(id):
     student = students_collection.find_one({"_id": ObjectId(id)})
 
+    if request.method == "POST":
+        updated_details = {
+            "name": request.form['name'],
+            "email": request.form['email'],
+            "contact": request.form['contact'],
+            "course": request.form['course'],
+        }
+
+        students_collection.update_one({"_id": ObjectId(id)}, {"$set": updated_details})
+
+        return redirect(url_for('index'))
+
     return render_template("edit-student.html", student=student)
 
 
